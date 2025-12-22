@@ -115,5 +115,11 @@ func main() {
 		c.JSON(http.StatusNotFound, gin.H{"error": "Versículo no encontrado"})
 	})
 
-	r.Run("0.0.0.0:8000")
+	port := os.Getenv("PORT")
+	if port == "" {
+		port = "8000"
+	}
+
+	r.Run("0.0.0.0:" + port)
+
 }
