@@ -41,12 +41,12 @@ func main() {
 	loadBible()
 
 	r := gin.Default()
-	r.Use(cors.New(cors.Config{
-		AllowOrigins:     []string{"*"},
-		AllowMethods:     []string{"GET", "POST", "PUT", "DELETE"},
-		AllowHeaders:     []string{"Origin", "Content-Type", "Authorization"},
-		AllowCredentials: true,
-	}))
+	 AllowOrigins:     []string{"*"}, // o ["http://localhost:8081"] para limitar
+        AllowMethods:     []string{"GET"},
+        AllowHeaders:     []string{"Origin", "Content-Type", "Authorization"},
+        ExposeHeaders:    []string{"Content-Length"},
+        AllowCredentials: true,
+        MaxAge: 12 * time.Hour,
 
 	// Salud
 	r.GET("/", func(c *gin.Context) {
